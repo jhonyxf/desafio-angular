@@ -1,0 +1,12 @@
+.centered-container {
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh; /* Isso garante que o conteúdo seja centralizado verticalmente na tela inteira. */
+  }
+  
+  .flexbox-parent {
+    text-align: center;
+  }

@@ -1,0 +1,17 @@
+.navbar {
+    background-color: #1789ab;
+    padding-top: 10px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+.form-field{
+    width: 80%;
+}
+

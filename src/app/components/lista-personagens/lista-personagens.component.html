@@ -1,0 +1,16 @@
+<h1>Lista de Personagens</h1>
+<ng-template #retornoSemPersonagens>
+  <h2>Nenhum personagem foi econtrado!</h2>
+</ng-template>
+<app-pesquisa (resultado)="atualizarLista($event)"></app-pesquisa>
+<div class="centered-container">
+  <ng-container
+    *ngIf="personagens.length > 0; else retornoSemPersonagens"
+    class="flexbox-parent"
+  >
+    <app-personagem
+      *ngFor="let personagem of personagens"
+      [personagem]="personagem"
+    ></app-personagem>
+  </ng-container>
+</div>
