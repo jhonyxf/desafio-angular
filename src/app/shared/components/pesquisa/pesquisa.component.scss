@@ -1,14 +1,14 @@
-.navbar {
+.container-pesquisa {
     background-color: #1789ab;
-    padding-top: 10px;
+    padding-top: 30px;
     position: sticky;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
+    justify-content: center;
+    align-items: center;
 }
 
 .form-field{

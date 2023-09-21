@@ -22,7 +22,7 @@ export class ListaPersonagensComponent implements OnInit {
         if (data && data.results) {
           this.personagens = data.results;
         } else {
-          console.error('Erro ao trazer os dados');
+          console.error('Dados vazio');
         }
       },
       error: () => {

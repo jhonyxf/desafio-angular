@@ -93,7 +93,7 @@ export class DetalhesPersonagemComponent implements OnInit {
     const dataFormatada = parseISO(data);
     return format(dataFormatada, 'dd/MM/yyyy', { locale: ptBR });
   }
-  
+
   voltar(): void {
     this.location.back();
   }

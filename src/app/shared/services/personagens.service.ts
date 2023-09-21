@@ -5,10 +5,9 @@ import { environment } from 'src/environments/environment.development';
 import { Personagem } from '../models/personagem';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PersonagensService {
-
   private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
@@ -24,5 +23,4 @@ export class PersonagensService {
   getPersonagemPorId(id: number): Observable<Personagem> {
     return this.http.get<Personagem>(`${this.apiUrl}/${id}`);
   }
-
 }
