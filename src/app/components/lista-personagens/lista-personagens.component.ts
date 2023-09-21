@@ -17,13 +17,21 @@ export class ListaPersonagensComponent implements OnInit {
   }
 
   carregarPersonagens(): void {
-    this.personagensService.getPersonagens().subscribe((data: any) => {
-      this.personagens = data.results;
+    this.personagensService.getPersonagens().subscribe({
+      next: (data: any) => {
+        if (data && data.results) {
+          this.personagens = data.results;
+        } else {
+          console.error('Erro ao trazer os dados');
+        }
+      },
+      error: () => {
+        console.error('Erro ao trazer os dados');
+      },
     });
   }
 
   atualizarLista(resultadosPesquisa: Personagem[]): void {
-    this.personagens = [];
-    this.personagens = resultadosPesquisa as Personagem[];
+    this.personagens = resultadosPesquisa;
   }
 }

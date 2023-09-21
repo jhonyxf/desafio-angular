@@ -8,5 +8,5 @@ import { Personagem } from 'src/app/shared/models/personagem';
 })
 export class PersonagemComponent {
   @Input()
-  personagem: Personagem | null = null;
+  personagem!: Personagem;
 }
