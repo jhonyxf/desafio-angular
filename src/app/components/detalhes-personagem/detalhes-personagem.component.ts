@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Personagem } from 'src/app/shared/models/personagem';
 import { PersonagensService } from 'src/app/shared/services/personagens.service';
 import { Location } from '@angular/common';
+import { format, parseISO } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 @Component({
   selector: 'app-detalhes-personagem',
@@ -25,7 +27,7 @@ export class DetalhesPersonagemComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      this.idPersonagem = params['id'];
+      this.idPersonagem = Number(params['id']);
     });
 
     this.personagensService.getPersonagemPorId(this.idPersonagem).subscribe({
@@ -49,10 +51,10 @@ export class DetalhesPersonagemComponent implements OnInit {
             image: personagem.image,
             episode: personagem.episode,
             url: personagem.url,
-            created: personagem.created,
+            created: this.formatarData(personagem.created),
           };
 
-          const detailsArray = [
+          const detalhesArray = [
             { propriedade: 'ID', valor: this.personagem.id },
             { propriedade: 'Nome', valor: this.personagem.name },
             { propriedade: 'Status', valor: this.personagem.status },
@@ -78,7 +80,7 @@ export class DetalhesPersonagemComponent implements OnInit {
             { propriedade: 'Data Criação', valor: this.personagem.created },
           ];
 
-          this.dataSource = new MatTableDataSource<any>(detailsArray);
+          this.dataSource = new MatTableDataSource<any>(detalhesArray);
         }
       },
       error: () => {
@@ -87,6 +89,11 @@ export class DetalhesPersonagemComponent implements OnInit {
     });
   }
 
+  formatarData(data: string): string {
+    const dataFormatada = parseISO(data);
+    return format(dataFormatada, 'dd/MM/yyyy', { locale: ptBR });
+  }
+  
   voltar(): void {
     this.location.back();
   }
